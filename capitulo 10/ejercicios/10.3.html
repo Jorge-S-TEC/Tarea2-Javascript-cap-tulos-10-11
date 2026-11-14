@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 10.3 - Arreglo Fracciones</title>
+        <script>
+            function ejecutarEjercicio() {
+                // a) Declarar un arreglo con 10 elementos e inicializar en 0
+                var fracciones = new Array( 10 );
+                for ( var i = 0; i < fracciones.length; ++i ) {
+                    fracciones[ i ] = 0;
+                }
+
+                // b y c) Hacer referencia a los elementos 3 y 4
+                var el3 = fracciones[ 3 ];
+                var el4 = fracciones[ 4 ];
+
+                // d) Asignar el valor 1.667 al elemento 9
+                fracciones[ 9 ] = 1.667;
+
+                // e) Asignar el valor 3.333 al elemento de menor numeración (0)
+                fracciones[ 0 ] = 3.333;
+
+                // f) Sumar todos los elementos mediante for...in con variable x
+                var total = 0;
+                for ( var x in fracciones ) {
+                    total += fracciones[ x ];
+                }
+
+                // Mostrar resultados en pantalla
+                var salida = "<h3>Resultados del Arreglo Fracciones:</h3>";
+                salida += "<p>Arreglo completo: " + fracciones.join(", ") + "</p>";
+                salida += "<p>Elemento 3: " + el3 + "</p>";
+                salida += "<p>Elemento 4: " + el4 + "</p>";
+                salida += "<p>Suma total (for...in): " + total + "</p>";
+                
+                document.getElementById("resultado").innerHTML = salida;
+            }
+
+            window.addEventListener("load", function() {
+                document.getElementById("btnEjecutar").addEventListener("click", ejecutarEjercicio, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h2>Ejercicio 10.3: Operaciones con fracciones</h2>
+        <input id="btnEjecutar" type="button" value="Ejecutar Instrucciones">
+        <div id="resultado"></div>
+    </body>
+</html>

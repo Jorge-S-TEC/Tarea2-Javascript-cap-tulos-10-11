@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 10.4 - Arreglo Tabla</title>
+        <script>
+            function ejecutarEjercicio() {
+                // a) Declarar y crear el arreglo con tres filas y tres columnas
+                var tabla = [ [0, 0, 0], [0, 0, 0], [0, 0, 0] ];
+
+                // b) Almacenar el número total de elementos en la variable totalElementos
+                var totalElementos = tabla.length * tabla[ 0 ].length;
+
+                // c) Usar for...in para inicializar con la suma de sus índices de fila y columna
+                for ( var x in tabla ) {
+                    for ( var y in tabla[ x ] ) {
+                        tabla[ x ][ y ] = parseInt( x ) + parseInt( y );
+                    }
+                }
+
+                // Mostrar resultados en formato de tabla HTML
+                var html = "<h3>Matriz Resultante (3x3):</h3><table border='1' cellpadding='5'>";
+                for ( var i = 0; i < tabla.length; ++i ) {
+                    html += "<tr>";
+                    for ( var j = 0; j < tabla[i].length; ++j ) {
+                        html += "<td>" + tabla[i][j] + "</td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</table>";
+                html += "<p>Número total de elementos: " + totalElementos + "</p>";
+
+                document.getElementById("resultado").innerHTML = html;
+            }
+
+            window.addEventListener("load", function() {
+                document.getElementById("btnEjecutar").addEventListener("click", ejecutarEjercicio, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h2>Ejercicio 10.4: Arreglo Bidimensional Tabla</h2>
+        <input id="btnEjecutar" type="button" value="Ejecutar y Mostrar Tabla">
+        <div id="resultado"></div>
+    </body>
+</html>

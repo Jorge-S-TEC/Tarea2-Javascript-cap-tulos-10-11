@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 10.11 - Manipulación de Arreglos</title>
+        <script>
+            function ejecutarManipulacion() {
+                var salida = "";
+
+                // a) Establecer los 10 elementos del arreglo cuentas en ceros
+                var cuentas = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+                salida += "<p><strong>a) Arreglo cuentas (ceros):</strong> " + cuentas.join(", ") + "</p>";
+
+                // b) Sumar 1 a cada uno de los 15 elementos del arreglo bono
+                var bono = [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75 ];
+                for ( var i = 0; i < bono.length; ++i ) {
+                    bono[ i ] += 1;
+                }
+                salida += "<p><strong>b) Bono incrementado en 1:</strong> " + bono.join(", ") + "</p>";
+
+                // c) Mostrar los 5 valores del arreglo mejoresPuntuaciones separados por espacios
+                var mejoresPuntuaciones = [ 98, 95, 92, 88, 85 ];
+                salida += "<p><strong>c) Mejores puntuaciones:</strong> " + mejoresPuntuaciones.join( " " ) + "</p>";
+
+                document.getElementById("resultado").innerHTML = salida;
+            }
+
+            window.addEventListener("load", function() {
+                document.getElementById("btnEjecutar").addEventListener("click", ejecutarManipulacion, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h2>Ejercicio 10.11: Operaciones sobre Arreglos Unidimensionales</h2>
+        <input id="btnEjecutar" type="button" value="Ejecutar">
+        <div id="resultado"></div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 10.13 - Matriz Ventas a Ceros</title>
+        <script>
+            function ejecutarVentasCeros() {
+                // Declarar matriz 3x5 de ejemplo
+                var ventas = [
+                    [ 100, 200, 300, 400, 500 ],
+                    [ 600, 700, 800, 900, 1000 ],
+                    [ 110, 220, 330, 440, 550 ]
+                ];
+
+                // Segmento de programa del ejercicio
+                for ( var fila in ventas ) {
+                    for ( var col in ventas[ fila ] ) {
+                        ventas[ fila ][ col ] = 0;
+                    }
+                }
+
+                // Mostrar resultado visual
+                var html = "<h3>Matriz 'ventas' después de establecerse en ceros:</h3><table border='1' cellpadding='5'>";
+                for ( var f = 0; f < ventas.length; ++f ) {
+                    html += "<tr>";
+                    for ( var c = 0; c < ventas[f].length; ++c ) {
+                        html += "<td>" + ventas[f][c] + "</td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</table>";
+
+                document.getElementById("resultado").innerHTML = html;
+            }
+
+            window.addEventListener("load", function() {
+                document.getElementById("btnEjecutar").addEventListener("click", ejecutarVentasCeros, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h2>Ejercicio 10.13: Reinicio de Matriz Bidimensional</h2>
+        <input id="btnEjecutar" type="button" value="Poner Ventas a Ceros">
+        <div id="resultado"></div>
+    </body>
+</html>

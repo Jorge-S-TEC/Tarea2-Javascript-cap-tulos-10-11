@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 10.8 - Operaciones varias</title>
+        <script>
+            function ejecutarOperaciones() {
+                var salida = "";
+
+                // a) Mostrar el valor del séptimo elemento del arreglo f (índice 6)
+                var f = [ 10, 20, 30, 40, 50, 60, 77, 80 ];
+                salida += "<p><strong>a) Séptimo elemento de f (f[6]):</strong> " + f[ 6 ] + "</p>";
+
+                // b) Inicializar cinco elementos del arreglo unidimensional g en 8
+                var g = [ 8, 8, 8, 8, 8 ];
+                salida += "<p><strong>b) Arreglo g inicializado:</strong> " + g.join(", ") + "</p>";
+
+                // c) Calcular el total de los elementos del arreglo c de 100 elementos (ejemplo con 5 para prueba)
+                var c = [ 1, 2, 3, 4, 5 ]; 
+                var totalC = 0;
+                for ( var i = 0; i < c.length; ++i ) { totalC += c[ i ]; }
+                salida += "<p><strong>c) Suma de elementos de c:</strong> " + totalC + "</p>";
+
+                // d) Copiar arreglo a en la primera porción de b
+                var a = [ 9, 8, 7 ];
+                var b = [ 0, 0, 0, 0, 0 ];
+                for ( var i = 0; i < a.length; ++i ) { b[ i ] = a[ i ]; }
+                salida += "<p><strong>d) Arreglo b tras copiar a:</strong> " + b.join(", ") + "</p>";
+
+                // e) Determinar valor más pequeño y más grande en w (punto flotante)
+                var w = [ 4.5, 1.2, 9.8, 3.3, 5.6 ];
+                var min = Math.min.apply( null, w );
+                var max = Math.max.apply( null, w );
+                salida += "<p><strong>e) Mínimo y Máximo en w:</strong> Mínimo = " + min + ", Máximo = " + max + "</p>";
+
+                document.getElementById("resultado").innerHTML = salida;
+            }
+
+            window.addEventListener("load", function() {
+                document.getElementById("btnEjecutar").addEventListener("click", ejecutarOperaciones, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <h2>Ejercicio 10.8: Operaciones de Arreglos</h2>
+        <input id="btnEjecutar" type="button" value="Ejecutar Operaciones">
+        <div id="resultado"></div>
+    </body>
+</html>
