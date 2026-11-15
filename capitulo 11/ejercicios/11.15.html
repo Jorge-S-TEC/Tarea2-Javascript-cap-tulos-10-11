@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.15: 11.15.html -->
+<!-- Filtrar cadenas que comiencen con el carácter "b". -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cadenas que empiezan con 'b'</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function filtrarPorB() {
+                var texto = document.getElementById("cadenasInput").value;
+                var palabras = texto.split(/\s+/);
+                var resultado = "";
+
+                for ( var i = 0; i < palabras.length; ++i ) {
+                    if ( palabras[ i ].charAt( 0 ).toLowerCase() === 'b' ) {
+                        resultado += palabras[ i ] + "\n";
+                    }
+                }
+
+                document.getElementById("cadenasSalida").value = resultado;
+            }
+
+            function iniciar() {
+                document.getElementById("btnFiltrarB").addEventListener("click", filtrarPorB, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Filtrar Cadenas que empiezan con 'b'</h2>
+        <form action="#">
+            <p><textarea id="cadenasInput" rows="5" cols="40" placeholder="Ingrese palabras separadas por espacios o saltos"></textarea></p>
+            <p><input id="btnFiltrarB" type="button" value="Filtrar"></p>
+        </form>
+        <textarea id="cadenasSalida" rows="5" cols="40"></textarea>
+    </body>
+</html>

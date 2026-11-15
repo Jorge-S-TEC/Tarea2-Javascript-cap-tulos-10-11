@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.18: 11.18.html -->
+<!-- Generar códigos de 000 a 255 e imprimir caracteres. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tabla ASCII (0-255)</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            textarea { font-family: monospace; }
+        </style>
+        <script>
+            function generarTablaASCII() {
+                var salida = "Código\tCarácter\n-------------------\n";
+                for ( var i = 0; i <= 255; ++i ) {
+                    salida += i + "\t    " + String.fromCharCode( i ) + "\n";
+                }
+                document.getElementById("areaASCII").value = salida;
+            }
+
+            function iniciar() {
+                document.getElementById("btnGenerarASCII").addEventListener("click", generarTablaASCII, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Generar Caracteres de 0 a 255</h2>
+        <input id="btnGenerarASCII" type="button" value="Generar Tabla">
+        <textarea id="areaASCII" rows="15" cols="40" style="margin-top:10px; display:block;"></textarea>
+    </body>
+</html>

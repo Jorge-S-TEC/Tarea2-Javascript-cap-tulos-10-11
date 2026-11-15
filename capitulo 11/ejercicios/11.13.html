@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.13: 11.13.html -->
+<!-- Determinación de ocurrencias de un carácter usando indexOf. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ocurrencias de un Carácter</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function contarOcurrencias() {
+                var texto = document.getElementById("textoLargo").value;
+                var charBuscado = document.getElementById("caracterBusqueda").value;
+                
+                if (!charBuscado) return;
+
+                var contador = 0;
+                var posicion = texto.indexOf( charBuscado );
+
+                while ( posicion !== -1 ) {
+                    contador++;
+                    posicion = texto.indexOf( charBuscado, posicion + 1 );
+                }
+
+                document.getElementById("resultadoConteo").innerHTML = "<p>El carácter '" + charBuscado + "' aparece " + contador + " veces.</p>";
+            }
+
+            function iniciar() {
+                document.getElementById("btnContar").addEventListener("click", contarOcurrencias, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Buscar Ocurrencias de un Carácter</h2>
+        <form action="#">
+            <p><textarea id="textoLargo" rows="4" cols="50" placeholder="Ingrese varias líneas de texto"></textarea></p>
+            <p><label>Carácter a buscar: <input id="caracterBusqueda" type="text" maxlength="1"></label>
+            <input id="btnContar" type="button" value="Contar Ocurrencias"></p>
+        </form>
+        <div id="resultadoConteo"></div>
+    </body>
+</html>

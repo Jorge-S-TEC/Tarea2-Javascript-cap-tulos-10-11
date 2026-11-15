@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.17: 11.17.html -->
+<!-- Obtener carácter a partir de código entero. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Carácter por Código</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function mostrarCaracter() {
+                var codigo = parseInt( document.getElementById("codigoInput").value );
+                var car = String.fromCharCode( codigo );
+                document.getElementById("charResultado").textContent = car;
+            }
+
+            function iniciar() {
+                document.getElementById("btnMostrarChar").addEventListener("click", mostrarCaracter, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Obtener Carácter por Código Entero</h2>
+        <form action="#">
+            <p><label>Código entero: <input id="codigoInput" type="number"></label>
+            <input id="btnMostrarChar" type="button" value="Mostrar Carácter"></p>
+        </form>
+        <p><strong>Carácter correspondiente:</strong> <span id="charResultado"></span></p>
+    </body>
+</html>

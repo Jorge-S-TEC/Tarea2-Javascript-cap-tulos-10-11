@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.14: 11.14.html -->
+<!-- Conteo total de cada letra del alfabeto en un texto. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Conteo de Todas las Letras</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            textarea { font-family: monospace; }
+        </style>
+        <script>
+            function analizarLetras() {
+                var texto = document.getElementById("textoAlfabeto").value.toLowerCase();
+                var frecuencias = {};
+
+                for ( var i = 97; i <= 122; ++i ) {
+                    frecuencias[ String.fromCharCode( i ) ] = 0;
+                }
+
+                for ( var j = 0; j < texto.length; ++j ) {
+                    var c = texto.charAt( j );
+                    if ( frecuencias[ c ] !== undefined ) {
+                        frecuencias[ c ]++;
+                    }
+                }
+
+                var salida = "Letra\tFrecuencia\n";
+                salida += "-------------------\n";
+                for ( var letra in frecuencias ) {
+                    salida += "  " + letra.toUpperCase() + "\t\t    " + frecuencias[ letra ] + "\n";
+                }
+
+                document.getElementById("areaTabla").value = salida;
+            }
+
+            function iniciar() {
+                document.getElementById("btnAnalizar").addEventListener("click", analizarLetras, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Conteo de Frecuencia de Letras</h2>
+        <form action="#">
+            <p><textarea id="textoAlfabeto" rows="5" cols="50" placeholder="Ingrese texto..."></textarea></p>
+            <p><input id="btnAnalizar" type="button" value="Analizar Frecuencias"></p>
+        </form>
+        <textarea id="areaTabla" rows="12" cols="40"></textarea>
+    </body>
+</html>

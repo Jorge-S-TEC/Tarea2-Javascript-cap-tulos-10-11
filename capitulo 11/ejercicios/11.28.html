@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.28: 11.28.html -->
+<!-- Estructura conceptual para un generador de crucigramas mediante matrices. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Generador de Crucigramas</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            table { border-collapse: collapse; margin-top: 10px; }
+            td { border: 1px solid #333; width: 25px; height: 25px; text-align: center; }
+        </style>
+        <script>
+            function generarCrucigrama() {
+                var filas = 10;
+                var columnas = 10;
+                var cuadricula = [];
+
+                for ( var i = 0; i < filas; ++i ) {
+                    cuadricula[ i ] = [];
+                    for ( var j = 0; j < columnas; ++j ) {
+                        cuadricula[ i ][ j ] = "#";
+                    }
+                }
+
+                var html = "<table>";
+                for ( var r = 0; r < filas; ++r ) {
+                    html += "<tr>";
+                    for ( var c = 0; c < columnas; ++c ) {
+                        html += "<td>" + cuadricula[ r ][ c ] + "</td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</table>";
+
+                document.getElementById("gridCrucigrama").innerHTML = html;
+            }
+
+            function iniciar() {
+                document.getElementById("btnCrucigrama").addEventListener("click", generarCrucigrama, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Generador de Crucigramas (Esqueleto)</h2>
+        <input id="btnCrucigrama" type="button" value="Generar Cuadrícula Vacía (10x10)">
+        <div id="gridCrucigrama"></div>
+    </body>
+</html>

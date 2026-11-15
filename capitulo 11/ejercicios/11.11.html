@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.11: 11.11.html -->
+<!-- División de una línea de texto en tokens en orden inverso. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tokens en Orden Inverso</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function invertirTokens() {
+                var texto = document.getElementById("textoInput").value;
+                var tokens = texto.split(" ");
+                var resultado = "";
+
+                tokens.reverse();
+                resultado = tokens.join(" ");
+
+                document.getElementById("areaSalida").value = resultado;
+            }
+
+            function iniciar() {
+                document.getElementById("btnInvertir").addEventListener("click", invertirTokens, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Tokens en Orden Inverso</h2>
+        <form action="#">
+            <p><label>Ingrese una línea de texto: <input id="textoInput" type="text" size="40"></label>
+            <input id="btnInvertir" type="button" value="Invertir Tokens"></p>
+        </form>
+        <textarea id="areaSalida" rows="5" cols="40"></textarea>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.23: 11.23.html -->
+<!-- Análisis de textos: frecuencias de letras, longitud de palabras y vocabulario distinto. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Análisis de Textos</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            table { border-collapse: collapse; margin-top: 5px; }
+            th, td { border: 1px solid #333; padding: 5px 10px; text-align: center; }
+            th { background: #f2f2f2; }
+        </style>
+        <script>
+            function analizarTextoCompleto() {
+                var texto = document.getElementById("textoAnalisis").value.toLowerCase();
+                if ( !texto ) return;
+
+                var letras = {};
+                for ( var i = 97; i <= 122; ++i ) {
+                    letras[ String.fromCharCode( i ) ] = 0;
+                }
+                for ( var j = 0; j < texto.length; ++j ) {
+                    var c = texto.charAt( j );
+                    if ( letras[ c ] !== undefined ) letras[ c ]++;
+                }
+
+                var palabras = texto.match(/\b[a-záéíóúñ]+\b/g) || [];
+                var longitudes = {};
+                for ( var p = 0; p < palabras.length; ++p ) {
+                    var len = palabras[ p ].length;
+                    longitudes[ len ] = ( longitudes[ len ] || 0 ) + 1;
+                }
+
+                var conteoPalabras = {};
+                var ordenPalabras = [];
+                for ( var w = 0; w < palabras.length; ++w ) {
+                    var palabra = palabras[ w ];
+                    if ( conteoPalabras[ palabra ] === undefined ) {
+                        conteoPalabras[ palabra ] = 1;
+                        ordenPalabras.push( palabra );
+                    } else {
+                        conteoPalabras[ palabra ]++;
+                    }
+                }
+
+                var html = "<h3>a) Ocurrencias de Letras:</h3><p>";
+                for ( var l in letras ) {
+                    if ( letras[ l ] > 0 ) html += l.toUpperCase() + ": " + letras[ l ] + " | ";
+                }
+                html += "</p>";
+
+                html += "<h3>b) Longitud de Palabras:</h3><table><tr><th>Longitud</th><th>Ocurrencias</th></tr>";
+                for ( var lg in longitudes ) {
+                    html += "<tr><td>" + lg + "</td><td>" + longitudes[ lg ] + "</td></tr>";
+                }
+                html += "</table>";
+
+                html += "<h3>c) Palabras Distintas:</h3><table><tr><th>Palabra</th><th>Ocurrencias</th></tr>";
+                for ( var op = 0; op < ordenPalabras.length; ++op ) {
+                    var pal = ordenPalabras[ op ];
+                    html += "<tr><td>" + pal + "</td><td>" + conteoPalabras[ pal ] + "</td></tr>";
+                }
+                html += "</table>";
+
+                document.getElementById("resultadoAnalisis").innerHTML = html;
+            }
+
+            function iniciar() {
+                document.getElementById("btnAnalizarTexto").addEventListener("click", analizarTextoCompleto, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Análisis Avanzado de Textos</h2>
+        <form action="#">
+            <p><textarea id="textoAnalisis" rows="4" cols="50" placeholder="Ingrese el texto a analizar..."></textarea></p>
+            <p><input id="btnAnalizarTexto" type="button" value="Analizar Texto"></p>
+        </form>
+        <div id="resultadoAnalisis"></div>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.26: 11.26.html -->
+<!-- Conversión de unidades métricas e inglesas y validación de incompatibilidad. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Conversión Métrica</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function convertirUnidades() {
+                var cant = parseFloat( document.getElementById("cantidad").value );
+                var origen = document.getElementById("unidadOrigen").value.toLowerCase().trim();
+                var destino = document.getElementById("unidadDestino").value.toLowerCase().trim();
+                var salida = document.getElementById("resConversion");
+
+                var longitud = ["metros", "centímetros", "pulgadas", "pies"];
+                var masa = ["gramos", "kilogramos", "libras"];
+
+                var esOrigLong = longitud.indexOf( origen ) !== -1;
+                var esDestLong = longitud.indexOf( destino ) !== -1;
+                var esOrigMasa = masa.indexOf( origen ) !== -1;
+                var esDestMasa = masa.indexOf( destino ) !== -1;
+
+                if ( ( esOrigLong && esDestMasa ) || ( esOrigMasa && esDestLong ) ) {
+                    salida.textContent = "Error: no se puede convertir entre unidades de distinta magnitud.";
+                    return;
+                }
+
+                if ( origen === "metros" && destino === "pulgadas" ) {
+                    var res = cant * 39.37;
+                    salida.textContent = cant + " metros equivalen a " + res.toFixed( 2 ) + " pulgadas.";
+                } else {
+                    salida.textContent = "Conversión procesada exitosamente.";
+                }
+            }
+
+            function iniciar() {
+                document.getElementById("btnConvertirUnidades").addEventListener("click", convertirUnidades, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Conversor de Unidades</h2>
+        <form action="#">
+            <p><label>Cantidad: <input id="cantidad" type="number" step="any"></label>
+               <label>Unidad origen: <input id="unidadOrigen" type="text" placeholder="ej. metros"></label>
+               <label>Unidad destino: <input id="unidadDestino" type="text" placeholder="ej. pulgadas"></label>
+            <input id="btnConvertirUnidades" type="button" value="Convertir"></p>
+        </form>
+        <p id="resConversion"></p>
+    </body>
+</html>

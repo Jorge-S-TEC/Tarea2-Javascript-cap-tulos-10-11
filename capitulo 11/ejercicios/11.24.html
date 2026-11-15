@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.24: 11.24.html -->
+<!-- Protección de cheques con asteriscos en 9 espacios disponibles. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Protección de Cheques</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function protegerMonto() {
+                var monto = parseFloat( document.getElementById("montoCheque").value );
+                if ( isNaN( monto ) ) return;
+
+                var textoMonto = monto.toFixed( 2 );
+                var espaciosDisponibles = 9;
+                var faltantes = espaciosDisponibles - textoMonto.length;
+
+                var resultado = "";
+                for ( var i = 0; i < faltantes; ++i ) {
+                    resultado += "*";
+                }
+                resultado += textoMonto;
+
+                document.getElementById("resProtegido").textContent = resultado;
+            }
+
+            function iniciar() {
+                document.getElementById("btnProteger").addEventListener("click", protegerMonto, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Protección de Montos para Cheques</h2>
+        <form action="#">
+            <p><label>Monto: <input id="montoCheque" type="number" step="any" placeholder="Ej. 99.87"></label>
+            <input id="btnProteger" type="button" value="Proteger Monto"></p>
+        </form>
+        <p><strong>Resultado en cheque:</strong> <span id="resProtegido" style="font-family: monospace; font-size: 1.2em;"></span></p>
+    </body>
+</html>

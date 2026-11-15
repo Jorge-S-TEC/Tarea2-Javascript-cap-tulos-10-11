@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Ejercicio 11.22: 11.22.html -->
+<!-- Impresión de fechas en varios formatos utilizando el objeto Date. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formatos de Fecha</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+        </style>
+        <script>
+            function mostrarFormatos() {
+                var val = document.getElementById("fechaInput").value;
+                if ( !val ) {
+                    alert("Seleccione una fecha válida.");
+                    return;
+                }
+
+                var partes = val.split("-");
+                var d = new Date( partes[0], partes[1] - 1, partes[2] );
+
+                var html = "<p><strong>toString():</strong> " + d.toString() + "</p>" +
+                           "<p><strong>toDateString():</strong> " + d.toDateString() + "</p>" +
+                           "<p><strong>toLocaleDateString():</strong> " + d.toLocaleDateString() + "</p>" +
+                           "<p><strong>toUTCString():</strong> " + d.toUTCString() + "</p>";
+
+                document.getElementById("salidaFormatos").innerHTML = html;
+            }
+
+            function iniciar() {
+                document.getElementById("btnFormatos").addEventListener("click", mostrarFormatos, false);
+            }
+
+            window.addEventListener("load", iniciar, false);
+        </script>
+    </head>
+    <body>
+        <h2>Conversor de Formatos de Fecha</h2>
+        <form action="#">
+            <p><label>Seleccione una fecha: <input id="fechaInput" type="date"></label>
+            <input id="btnFormatos" type="button" value="Mostrar Formatos"></p>
+        </form>
+        <div id="salidaFormatos"></div>
+    </body>
+</html>
